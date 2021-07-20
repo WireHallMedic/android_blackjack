@@ -3,6 +3,7 @@ class Card {
   int val = 0;
   String suit = "?";
 
+  // create a card from indexs
   Card(int pos, int s) {
     switch (pos) {
       case 0:  face = "A";  val = 11; break;
@@ -27,13 +28,21 @@ class Card {
     }
   }
 
+  // calculating a hand that has not yet had an ace
   int getHighValue() {
     return val;
   }
 
+  // calculating a hand that has had one or more aces
   int getLowVal() {
     if (val == 11)
       return 1;
     return val;
+  }
+
+  // compare two cards
+  bool compare(Card that)
+  {
+    return this.val == that.val;
   }
 }
