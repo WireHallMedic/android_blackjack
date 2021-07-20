@@ -5,72 +5,25 @@ class Card {
 
   Card(int pos, int s) {
     switch (pos) {
-      case 0:
-        face = "A";
-        val = 11;
-        break;
-      case 1:
-        face = "2";
-        val = 2;
-        break;
-      case 2:
-        face = "3";
-        val = 3;
-        break;
-      case 3:
-        face = "4";
-        val = 4;
-        break;
-      case 4:
-        face = "5";
-        val = 5;
-        break;
-      case 5:
-        face = "6";
-        val = 6;
-        break;
-      case 6:
-        face = "7";
-        val = 7;
-        break;
-      case 7:
-        face = "8";
-        val = 8;
-        break;
-      case 8:
-        face = "9";
-        val = 9;
-        break;
-      case 9:
-        face = "10";
-        val = 10;
-        break;
-      case 10:
-        face = "J";
-        val = 10;
-        break;
-      case 11:
-        face = "Q";
-        val = 10;
-        break;
-      case 12:
-        face = "K";
-        val = 10;
-        break;
+      case 0:  face = "A";  val = 11; break;
+      case 1:  face = "2";  val = 2;  break;
+      case 2:  face = "3";  val = 3;  break;
+      case 3:  face = "4";  val = 4;  break;
+      case 4:  face = "5";  val = 5;  break;
+      case 5:  face = "6";  val = 6;  break;
+      case 6:  face = "7";  val = 7;  break;
+      case 7:  face = "8";  val = 8;  break;
+      case 8:  face = "9";  val = 9;  break;
+      case 9:  face = "10"; val = 10; break;
+      case 10: face = "J";  val = 10; break;
+      case 11: face = "Q";  val = 10; break;
+      case 12: face = "K";  val = 10; break;
     }
     switch (s) {
-      case 0:
-        suit = "S";
-        break;
-      case 1:
-        suit = "H";
-        break;
-      case 2:
-        suit = "D";
-        break;
-      case 3:
-        suit = "C";
-        break;
+      case 0: suit = "S"; break;
+      case 1: suit = "H"; break;
+      case 2: suit = "D"; break;
+      case 3: suit = "C"; break;
     }
   }
 
@@ -79,7 +32,8 @@ class Card {
   }
 
   int getLowVal() {
-    if (val == 11) return 1;
+    if (val == 11)
+      return 1;
     return val;
   }
 }
