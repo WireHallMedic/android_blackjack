@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Card {
   String face = "?";
   int val = 0;
@@ -50,7 +52,7 @@ class Card {
   Color getColor()
   {
     if(this.suit == "H" || this.suit == "D")
-      return Color.red;
-    return Color.black;
+      return Colors.red;
+    return Colors.black;
   }
 }
