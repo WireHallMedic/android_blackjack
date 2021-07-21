@@ -17,11 +17,12 @@ class Hand {
   // mock constructor
   Hand.mock();
 
-  // getter for displaying cards
+  // getters
   List get cards => _cards;
   int get value => _value;
   bool get isHard => _hard;
   bool get isSoft => !_hard;
+  bool get isBusted => value > MAX_HAND_VALUE;
 
   // draw a card
   void draw() {
@@ -43,8 +44,8 @@ class Hand {
     for(int i = 0; i < _cards.length; i++)
     {
       PlayingCard c = _cards.elementAt(i);
-      val += c.getLowVal() as int;
-      if (c.getHighVal() as int == 11) {
+      val += c.getLowVal();
+      if (c.getHighVal() == 11) {
         aceFound = true;
       }
     }
@@ -55,10 +56,5 @@ class Hand {
       _value = val;
       _hard = true;
     }
-  }
-
-  // is the hand over 21?
-  bool isBusted() {
-    return value > MAX_HAND_VALUE;
   }
 }
