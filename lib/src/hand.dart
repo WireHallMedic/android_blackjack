@@ -39,13 +39,12 @@ class Hand {
 
   // calculate value of hand
   void calcValue() {
-    int val = 0;
+    var val = 0;
     bool aceFound = false;
     // can't use a foreach beacuse we need val and aceFound in scope
     for (int i = 0; i < _cards.length; i++) {
-      PlayingCard c = _cards.elementAt(i);
-      val += c.getLowVal();
-      if (c.getHighVal() == 11) {
+      val += _cards[i].getLowVal() as int;
+      if (_cards[i].getHighVal() as int == 11) {
         aceFound = true;
       }
     }
@@ -56,5 +55,14 @@ class Hand {
       _value = val;
       _hard = true;
     }
+  }
+
+  String get string {
+    String str = "";
+    for (int i = 0; i < _cards.length; i++) {
+      str += _cards.elementAt(i).string;
+      if (i < _cards.length - 1) str += ", ";
+    }
+    return str;
   }
 }
