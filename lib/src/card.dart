@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Card {
+class PlayingCard {
   String face = "?";
   int val = 0;
   String suit = "?";
 
   // create a card from indexs
-  Card(int pos, int s) {
+  PlayingCard(int pos, int s) {
     switch (pos) {
       case 0:  face = "A";  val = 11; break;
       case 1:  face = "2";  val = 2;  break;
@@ -43,7 +43,7 @@ class Card {
   }
 
   // compare two cards
-  bool compare(Card that)
+  bool compare(PlayingCard that)
   {
     return this.val == that.val;
   }
