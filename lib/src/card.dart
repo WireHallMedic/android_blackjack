@@ -5,6 +5,8 @@ class PlayingCard {
   int val = 0;
   String suit = "?";
 
+  PlayingCard.mock();
+
   // create a card from indexs
   PlayingCard(int pos, int s) {
     switch (pos) {

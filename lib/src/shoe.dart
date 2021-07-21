@@ -7,7 +7,10 @@ class Shoe {
   int _reshuffleAtDecks = 1;
   List stack = [];
   Random rng = Random();
-  int gamesSinceShuffled = 0;
+  int _gamesSinceShuffle = 0;
+  static const int CARDS_IN_A_DECK = 52;
+
+  Shoe.mock(){}
 
   Shoe(int decks, int reshufflePoint) {
     _numberOfDecks = max<int>(decks, 1);
@@ -17,7 +20,7 @@ class Shoe {
 
   // create a new shoe of _numberOfDecks shuffled decks
   void shuffle() {
-    gamesSinceShuffled = 0;
+    _gamesSinceShuffle = 0;
     stack = [];
     var _tempStack = [];
     for (int i = 0; i < _numberOfDecks; i++) {
@@ -44,15 +47,20 @@ class Shoe {
 
   // draw a single card
   PlayingCard draw() {
-    if (stack.isEmpty) shuffle();
+    if (stack.isEmpty) 
+      shuffle();
     return stack.removeAt(0);
   }
 
   // notify the deck that a game has ended
   void gameHasEnded() {
-    gamesSinceShuffled += 1;
-    if (stack.length <= (52 * _reshuffleAtDecks)) {
+    _gamesSinceShuffle += 1;
+    if (stack.length <= (CARDS_IN_A_DECK * _reshuffleAtDecks)) {
       shuffle();
     }
+  }
+
+  int get gamesSinceShuffle{
+    return _gamesSinceShuffle;
   }
 }
