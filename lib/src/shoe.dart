@@ -10,7 +10,7 @@ class Shoe {
   int _gamesSinceShuffle = 0;
   static const int CARDS_IN_A_DECK = 52;
 
-  Shoe.mock(){}
+  Shoe.mock();
 
   Shoe(int decks, int reshufflePoint) {
     _numberOfDecks = max<int>(decks, 1);
@@ -47,8 +47,7 @@ class Shoe {
 
   // draw a single card
   PlayingCard draw() {
-    if (stack.isEmpty) 
-      shuffle();
+    if (stack.isEmpty) shuffle();
     return stack.removeAt(0);
   }
 
@@ -60,7 +59,7 @@ class Shoe {
     }
   }
 
-  int get gamesSinceShuffle{
+  int get gamesSinceShuffle {
     return _gamesSinceShuffle;
   }
 }
