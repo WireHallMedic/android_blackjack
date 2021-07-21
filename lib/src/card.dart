@@ -45,4 +45,12 @@ class Card {
   {
     return this.val == that.val;
   }
+
+  // get suit-based color
+  Color getColor()
+  {
+    if(this.suit == "H" || this.suit == "D")
+      return Color.red;
+    return Color.black;
+  }
 }
