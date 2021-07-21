@@ -33,7 +33,7 @@ class PlayingCard {
   }
 
   // calculating a hand that has not yet had an ace
-  int getHighValue() {
+  int getHighVal() {
     return val;
   }
 
