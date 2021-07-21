@@ -27,6 +27,7 @@ class Hand {
   // draw a card
   void draw() {
     _cards.add(parentShoe.draw);
+    calcValue();
   }
 
   // new game; clear hand and draw two
@@ -41,8 +42,7 @@ class Hand {
     int val = 0;
     bool aceFound = false;
     // can't use a foreach beacuse we need val and aceFound in scope
-    for(int i = 0; i < _cards.length; i++)
-    {
+    for (int i = 0; i < _cards.length; i++) {
       PlayingCard c = _cards.elementAt(i);
       val += c.getLowVal();
       if (c.getHighVal() == 11) {
