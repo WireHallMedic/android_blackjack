@@ -78,6 +78,11 @@ class _BJWidgetState extends State<BJWidget> {
       ),
     );
     if (game.phase == BlackjackGame.SHOWDOWN_PHASE) {
+    buttons.add(
+      Text(
+        game.getResults(),
+      ),
+    );
       buttons.add(
         ElevatedButton(
           onPressed: () {

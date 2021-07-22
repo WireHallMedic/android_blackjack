@@ -65,4 +65,14 @@ class Hand {
     }
     return str;
   }
+
+  String get faceDownString {
+    String str = "";
+    if (_cards.length > 0) {
+      str += _cards.elementAt(i).string;
+      str += ", ";
+    }
+    str += "?";
+    return str;
+  }
 }
