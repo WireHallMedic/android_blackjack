@@ -134,10 +134,10 @@ class BlackjackGame {
         res = "You and the dealer both have ${playerHand.value}; it's a push.";
         break;
       case DEALER_WIN_BUST:
-        res = "Dealer busted; you win!";
+        res = "You busted; dealer wins.";
         break;
       case PLAYER_WIN_BUST:
-        res = "You busted; dealer wins.";
+        res = "Dealer busted; you win!";
         break;
     }
     return res;
