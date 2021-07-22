@@ -25,15 +25,6 @@ class MyApp extends StatelessWidget {
 class BJWidget extends StatefulWidget {
   const BJWidget({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -46,7 +37,10 @@ class _BJWidgetState extends State<BJWidget> {
   BlackjackGame game = BlackjackGame(1, 1);
 
   _BJWidgetState() {
-    Timer.periodic(Duration(milliseconds: 500), _timerKick);
+    Timer.periodic(Duration(milliseconds: 500), (timer) {
+      game.kick();
+      _updateWidget();
+    });
   }
 
   void _updateWidget() {
@@ -54,13 +48,6 @@ class _BJWidgetState extends State<BJWidget> {
       _dealerString = game.dealerHand.string;
       _playerString = game.playerHand.string;
     });
-  }
-
-  void _timerKick(timer) {
-    if (game.phase == BlackjackGame.SHOWDOWN_PHASE) {
-      game.kick();
-    }
-    _updateWidget();
   }
 
   @override
@@ -94,6 +81,7 @@ class _BJWidgetState extends State<BJWidget> {
       buttons.add(
         ElevatedButton(
           onPressed: () {
+            game.newGame();
             _updateWidget();
           },
           child: Text("New Game"),
