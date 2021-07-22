@@ -1,16 +1,7 @@
 # android_blackjack
 
-A new Flutter project.
+A simple card game, to get some practice in Flutter. It's called android_blackjack, but there's nothing Android-specific about it.
 
-## Getting Started
+There is additional functionality under the hood, such as being able to specify how many decks from which to make the shoe, the point at which to reshuffle, and keeping track of how many games since reshuffling. Initially I was going to have a mode for practicing card counting, but didn't wind up going that way.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Feel free to make this fancier.
