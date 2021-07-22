@@ -26,7 +26,7 @@ class Hand {
 
   // draw a card
   void draw() {
-    _cards.add(parentShoe.draw);
+    _cards.add(parentShoe.draw());
     calcValue();
   }
 
