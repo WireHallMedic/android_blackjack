@@ -87,7 +87,7 @@ class _BJWidgetState extends State<BJWidget> {
           child: Text("New Game"),
         ),
       );
-    } else {
+    } if(gameObj.phase == BlackjackGame.PLAYER_PHASE) {
       buttons.add(
         ElevatedButton(
           onPressed: () {
