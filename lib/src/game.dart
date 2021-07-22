@@ -29,6 +29,8 @@ class BlackjackGame {
     newGame();
   }
 
+  int get phase => _phase;
+
   // start new game
   void newGame() {
     // deal

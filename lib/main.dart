@@ -60,28 +60,53 @@ class _BJWidgetState extends State<BJWidget> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              _dealerString,
-            ),
-            Text(
-              _playerString,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                _updateWidget();
-              },
-              child: Text("Hit"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                _updateWidget();
-              },
-              child: Text("Stand"),
-            ),
-          ],
+          children: getButtonsByPhase(game),
         ),
       ),
     );
+  }
+
+   List<Widget> getButtonsByPhase(BlackjackGame gameObj) {
+    List<Widget> buttons = [];
+    buttons.add(
+      Text(
+        _dealerString,
+      ),
+    );
+    buttons.add(
+      Text(
+        _playerString,
+      ),
+    );
+    if (gameObj.phase == BlackjackGame.SHOWDOWN_PHASE) {
+      buttons.add(
+        ElevatedButton(
+          onPressed: () {
+            _updateWidget();
+          },
+          child: Text("New Game"),
+        ),
+      );
+    } else {
+      buttons.add(
+        ElevatedButton(
+          onPressed: () {
+            game.playerDraw();
+            _updateWidget();
+          },
+          child: Text("Hit"),
+        ),
+      );
+      buttons.add(
+        ElevatedButton(
+          onPressed: () {
+            game.playerStand();
+            _updateWidget();
+          },
+          child: Text("Stand"),
+        ),
+      );
+    }
+    return buttons;
   }
 }
