@@ -45,7 +45,11 @@ class _BJWidgetState extends State<BJWidget> {
 
   void _updateWidget() {
     setState(() {
-      _dealerString = game.dealerHand.string;
+      if (game.phase == BlackjackGame.PLAYER_PHASE) {
+        _dealerString = game.dealerHand.faceDownString;
+      } else {
+        _dealerString = game.dealerHand.string;
+      }
       _playerString = game.playerHand.string;
     });
   }
@@ -78,11 +82,11 @@ class _BJWidgetState extends State<BJWidget> {
       ),
     );
     if (game.phase == BlackjackGame.SHOWDOWN_PHASE) {
-    buttons.add(
-      Text(
-        game.getResults(),
-      ),
-    );
+      buttons.add(
+        Text(
+          game.getResults(),
+        ),
+      );
       buttons.add(
         ElevatedButton(
           onPressed: () {

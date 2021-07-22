@@ -1,5 +1,5 @@
 //import 'dart:math';
-import 'card.dart';
+//import 'card.dart';
 import 'shoe.dart';
 
 class Hand {
@@ -7,7 +7,7 @@ class Hand {
   Shoe parentShoe = Shoe.mock();
   int _value = 0;
   bool _hard = true;
-  static final int MAX_HAND_VALUE = 21;
+  static const int MAX_HAND_VALUE = 21;
 
   // constructor; requries a shoe from which to draw
   Hand(Shoe parent) {
@@ -68,8 +68,8 @@ class Hand {
 
   String get faceDownString {
     String str = "";
-    if (_cards.length > 0) {
-      str += _cards.elementAt(i).string;
+    if (_cards.isNotEmpty) {
+      str += _cards.elementAt(0).string;
       str += ", ";
     }
     str += "?";
