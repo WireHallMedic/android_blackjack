@@ -78,7 +78,7 @@ class BlackjackGame {
   void playerDraw() {
     playerHand.draw();
     if (playerHand.isBusted) {
-      _phase = DEALER_PHASE;
+      _phase = SHOWDOWN_PHASE;
       _result = DEALER_WIN_BUST;
     }
   }
