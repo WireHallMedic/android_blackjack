@@ -38,6 +38,8 @@ class _BJWidgetState extends State<BJWidget> {
   static const double standardPadding = 5.0;
 
   _BJWidgetState() {
+    // timer kicks the game so dealer draws every half second,
+    // instead of instanteanously
     Timer.periodic(Duration(milliseconds: 500), (timer) {
       game.kick();
       _updateWidget();

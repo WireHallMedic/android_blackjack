@@ -1,5 +1,3 @@
-//import 'dart:math';
-//import 'card.dart';
 import 'shoe.dart';
 
 class Hand {
@@ -20,6 +18,8 @@ class Hand {
   // getters
   List get cards => _cards;
   int get value => _value;
+  // hard and soft in case you want to implement, say, 'dealer
+  // stands on a soft 16'
   bool get isHard => _hard;
   bool get isSoft => !_hard;
   bool get isBusted => value > MAX_HAND_VALUE;
@@ -57,6 +57,7 @@ class Hand {
     }
   }
 
+  // returns a string representing the hand of cards
   String get string {
     String str = "";
     for (int i = 0; i < _cards.length; i++) {
@@ -66,6 +67,8 @@ class Hand {
     return str;
   }
 
+  // a string representing the dealer's initial one face up, one
+  // face down hand
   String get faceDownString {
     String str = "";
     if (_cards.isNotEmpty) {

@@ -1,4 +1,5 @@
-import 'card.dart';
+// ignore_for_file: constant_identifier_names
+
 import 'hand.dart';
 import 'shoe.dart';
 
@@ -50,14 +51,17 @@ class BlackjackGame {
         _phase = PLAYER_PHASE;
         break;
       case 1:
+        // only dealer has a blackjack, dealer wins
         _phase = SHOWDOWN_PHASE;
         _result = DEALER_WIN_BLACKJACK;
         break;
       case 2:
+        // only player has a blackjack, player wins
         _phase = SHOWDOWN_PHASE;
         _result = PLAYER_WIN_BLACKJACK;
         break;
       case 3:
+        // both dealer and player have blackjack, push
         _phase = SHOWDOWN_PHASE;
         _result = PUSH;
         break;
@@ -66,6 +70,7 @@ class BlackjackGame {
 
   // act when kicked by timer
   void kick() {
+    // there are many phases in which this does nothing
     if (_phase == DEALER_PHASE) {
       dealerTurn();
     }
@@ -91,7 +96,6 @@ class BlackjackGame {
   // dealer either draws or stands
   void dealerTurn() {
     int dVal = dealerHand.value;
-    int pVal = playerHand.value;
     bool stand = false;
     if ((dVal >= HARD_STAND && dealerHand.isHard) ||
         (dVal >= SOFT_STAND && dealerHand.isSoft)) stand = true;
@@ -109,7 +113,7 @@ class BlackjackGame {
     }
   }
 
-  // only valid during showdown phase
+  // get results during the showdown phase
   String getResults() {
     String res = "Unknown result";
     switch (_result) {

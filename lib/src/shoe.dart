@@ -1,4 +1,3 @@
-//import 'package:flutter/material.dart';
 import 'dart:math';
 import 'card.dart';
 
@@ -10,8 +9,10 @@ class Shoe {
   int _gamesSinceShuffle = 0;
   static const int CARDS_IN_A_DECK = 52;
 
+  // mock constructor
   Shoe.mock();
 
+  // standard constructor
   Shoe(int decks, int reshufflePoint) {
     _numberOfDecks = max<int>(decks, 1);
     _reshuffleAtDecks = min<int>(decks, 1);
@@ -23,12 +24,14 @@ class Shoe {
     _gamesSinceShuffle = 0;
     stack = [];
     var _tempStack = [];
+    // make decks
     for (int i = 0; i < _numberOfDecks; i++) {
       var deck = _getDeck();
       while (deck.isNotEmpty) {
         _tempStack.add(deck.removeAt(0));
       }
     }
+    // shuffle them
     while (_tempStack.isNotEmpty) {
       var cardIndex = rng.nextInt(_tempStack.length);
       stack.add(_tempStack.removeAt(cardIndex));
@@ -47,6 +50,7 @@ class Shoe {
 
   // draw a single card
   PlayingCard draw() {
+    // if statement for safety, should never be true
     if (stack.isEmpty) shuffle();
     return stack.removeAt(0);
   }
@@ -59,6 +63,7 @@ class Shoe {
     }
   }
 
+  // simple getter
   int get gamesSinceShuffle {
     return _gamesSinceShuffle;
   }

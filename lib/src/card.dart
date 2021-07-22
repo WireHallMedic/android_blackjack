@@ -43,12 +43,6 @@ class PlayingCard {
       return 1;
     return val;
   }
-/*
-  // compare two cards
-  bool compare(PlayingCard that)
-  {
-    return this.val == that.val;
-  }*/
 
   // get suit-based color
   Color getColor()
@@ -58,6 +52,7 @@ class PlayingCard {
     return Colors.black;
   }
 
+  // simple string representing the card
   String get string
   {
     return "$face$suit";
