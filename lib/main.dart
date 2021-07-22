@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'src/game.dart';
 
 void main() {
@@ -44,11 +45,22 @@ class _BJWidgetState extends State<BJWidget> {
   String _playerString = "";
   BlackjackGame game = BlackjackGame(1, 1);
 
+  _BJWidgetState() {
+    Timer.periodic(Duration(milliseconds: 500), _timerKick);
+  }
+
   void _updateWidget() {
     setState(() {
       _dealerString = game.dealerHand.string;
       _playerString = game.playerHand.string;
     });
+  }
+
+  void _timerKick(timer) {
+    if (game.phase == BlackjackGame.SHOWDOWN_PHASE) {
+      game.kick();
+    }
+    _updateWidget();
   }
 
   @override
@@ -60,13 +72,13 @@ class _BJWidgetState extends State<BJWidget> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: getButtonsByPhase(game),
+          children: getButtonsByPhase(),
         ),
       ),
     );
   }
 
-   List<Widget> getButtonsByPhase(BlackjackGame gameObj) {
+  List<Widget> getButtonsByPhase() {
     List<Widget> buttons = [];
     buttons.add(
       Text(
@@ -78,7 +90,7 @@ class _BJWidgetState extends State<BJWidget> {
         _playerString,
       ),
     );
-    if (gameObj.phase == BlackjackGame.SHOWDOWN_PHASE) {
+    if (game.phase == BlackjackGame.SHOWDOWN_PHASE) {
       buttons.add(
         ElevatedButton(
           onPressed: () {
@@ -87,7 +99,8 @@ class _BJWidgetState extends State<BJWidget> {
           child: Text("New Game"),
         ),
       );
-    } if(gameObj.phase == BlackjackGame.PLAYER_PHASE) {
+    }
+    if (game.phase == BlackjackGame.PLAYER_PHASE) {
       buttons.add(
         ElevatedButton(
           onPressed: () {
