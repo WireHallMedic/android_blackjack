@@ -60,6 +60,6 @@ class PlayingCard {
 
   String get string
   {
-    return "$val$suit";
+    return "$face$suit";
   }
 }

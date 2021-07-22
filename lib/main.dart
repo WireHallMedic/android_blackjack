@@ -35,6 +35,7 @@ class _BJWidgetState extends State<BJWidget> {
   String _dealerString = "";
   String _playerString = "";
   BlackjackGame game = BlackjackGame(1, 1);
+  static const double standardPadding = 5.0;
 
   _BJWidgetState() {
     Timer.periodic(Duration(milliseconds: 500), (timer) {
@@ -51,6 +52,8 @@ class _BJWidgetState extends State<BJWidget> {
         _dealerString = game.dealerHand.string;
       }
       _playerString = game.playerHand.string;
+      _dealerString = "Dealer has: $_dealerString";
+      _playerString = "You have: $_playerString";
     });
   }
 
@@ -72,48 +75,66 @@ class _BJWidgetState extends State<BJWidget> {
   List<Widget> getButtonsByPhase() {
     List<Widget> buttons = [];
     buttons.add(
-      Text(
-        _dealerString,
+      Padding(
+        padding: const EdgeInsets.all(standardPadding),
+        child: Text(
+          _dealerString,
+        ),
       ),
     );
     buttons.add(
-      Text(
-        _playerString,
+      Padding(
+        padding: const EdgeInsets.all(standardPadding),
+        child: Text(
+          _playerString,
+        ),
       ),
     );
     if (game.phase == BlackjackGame.SHOWDOWN_PHASE) {
       buttons.add(
-        Text(
-          game.getResults(),
+        Padding(
+          padding: const EdgeInsets.all(standardPadding),
+          child: Text(
+            game.getResults(),
+          ),
         ),
       );
       buttons.add(
-        ElevatedButton(
-          onPressed: () {
-            game.newGame();
-            _updateWidget();
-          },
-          child: Text("New Game"),
+        Padding(
+          padding: const EdgeInsets.all(standardPadding),
+          child: ElevatedButton(
+            onPressed: () {
+              game.newGame();
+              _updateWidget();
+            },
+            child: Text("New Game"),
+          ),
         ),
       );
     }
     if (game.phase == BlackjackGame.PLAYER_PHASE) {
       buttons.add(
-        ElevatedButton(
-          onPressed: () {
-            game.playerDraw();
-            _updateWidget();
-          },
-          child: Text("Hit"),
+        Padding(
+          padding: const EdgeInsets.all(standardPadding),
+          child: ElevatedButton(
+            onPressed: () {
+              game.playerDraw();
+              _updateWidget();
+            },
+            child: Text("Hit"),
+          ),
         ),
       );
       buttons.add(
-        ElevatedButton(
-          onPressed: () {
-            game.playerStand();
-            _updateWidget();
-          },
-          child: Text("Stand"),
+        Padding(
+          padding: const EdgeInsets.all(standardPadding),
+          child: ElevatedButton(
+            onPressed: () {
+              game.playerStand();
+              _updateWidget();
+            },
+            child: Text("Stand"),
+          ),
         ),
       );
     }
